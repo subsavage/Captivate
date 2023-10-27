@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "337749247346",
+    "project_id": "captivate-1dd08",
+    "storage_bucket": "captivate-1dd08.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:337749247346:android:da25d765119e1c3c1ac9eb",
+        "android_client_info": {
+          "package_name": "com.example.captivate"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDVlyPJ-NFQwAz_v0_FzpG37_zpD1hNne0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
