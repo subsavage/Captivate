@@ -1,5 +1,6 @@
 import 'package:captivate/rewrite_caption.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 class CreatePost extends StatefulWidget {
   const CreatePost({Key? key}) : super(key: key);
@@ -12,6 +13,8 @@ class CreatePostState extends State<CreatePost> {
   late final TextEditingController textFieldController;
   String enteredText = '';
   String generatedCaption = '';
+  final picker = ImagePicker();
+  bool isLoading = false;
 
   @override
   void initState() {
@@ -29,8 +32,7 @@ class CreatePostState extends State<CreatePost> {
   Widget build(BuildContext context) {
     Widget button() {
       return Container(
-        height: MediaQuery.of(context).size.height *
-            0.035, // Change MediaQuery.sizeOf to MediaQuery.of
+        height: MediaQuery.of(context).size.height * 0.035,
         decoration: BoxDecoration(
           gradient: const LinearGradient(
             colors: [Colors.blue, Colors.red],
@@ -41,9 +43,19 @@ class CreatePostState extends State<CreatePost> {
         ),
         child: MaterialButton(
           onPressed: () async {
-            print(textFieldController.text);
+            // print(textFieldController.text);
+
+            setState(() {
+              isLoading = true;
+            });
+
             final caption = await rewriteCaption(textFieldController.text);
-            print(caption);
+
+            setState(() {
+              textFieldController.text = caption;
+              isLoading = false;
+            });
+            // print(caption);
             setState(() {
               textFieldController.text = caption;
             });
@@ -130,6 +142,7 @@ class CreatePostState extends State<CreatePost> {
                         ),
                         maxLines: null,
                       ),
+                      if (isLoading) const CircularProgressIndicator(),
                       if (generatedCaption.isNotEmpty)
                         Text(
                           generatedCaption,

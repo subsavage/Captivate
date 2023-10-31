@@ -7,7 +7,7 @@ Future<String> rewriteCaption(String caption) async {
       headers: {
         'Content-Type': 'application/json',
         'Authorization':
-            'Bearer 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',
+            'Bearer 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',
       },
       body: jsonEncode({
         "model": "gpt-3.5-turbo",
@@ -18,7 +18,7 @@ Future<String> rewriteCaption(String caption) async {
           }
         ]
       }));
-  print(response.body);
+  // print(response.body);
   if (response.statusCode == 200) {
     var jsonResponse = jsonDecode(response.body);
     return jsonResponse['choices'][0]['message']['content'];
